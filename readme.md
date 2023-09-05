@@ -11,7 +11,7 @@ This is a starter template for building mobile applications using Expo and React
 -   **Authentication Handling:** The template provides a starting point for implementing user authentication using Redux and protected routing access with Expo Router.
 -   **Redux Setup:** Get started with state management using Redux Toolkit and predefined slices for common app state, such as authentication and settings.
 -   **Responsive UI:** The template includes responsive UI components and theming to create a consistent user experience on various devices.
--   **Navigation:** Utilize React Navigation for smooth navigation between screens and tabs.
+-   **Navigation:** Utilize React Navigation and Expo router for smooth navigation between screens and tabs.
 
 ## Usage
 
@@ -19,15 +19,15 @@ To create a new mobile app project using this template as an Expo template, foll
 
 1. Create a new Expo project based on this template using the following command:
 
-`npx create-expo-app my-new-app --template https://github.com/edrinekamya/expo-router-redux-template.git`
+    `npx create-expo-app my-new-app --template https://github.com/edrinekamya/expo-router-redux-template.git`
 
-or
+    or
 
-`yarn create expo-app my-new-app --template https://github.com/edrinekamya/expo-router-redux-template.git`
+    `yarn create expo-app my-new-app --template https://github.com/edrinekamya/expo-router-redux-template.git`
 
 2. Navigate to the project directory:
 
-`cd my-new-app`
+    `cd my-new-app`
 
 3. To launch your app and run it on an emulator, physical device, or web browser, start the Expo development server using one of the following commands:
 
