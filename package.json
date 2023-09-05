@@ -1,5 +1,5 @@
 {
-	"name": "expo-template",
+	"name": "expo-router-redux-template",
 	"main": "expo-router/entry",
 	"version": "1.0.0",
 	"scripts": {
@@ -50,5 +50,8 @@
 	"resolutions": {
 		"react-refresh": "~0.14.0"
 	},
-	"private": true
+	"author": {
+		"name": "Edrine Kamya",
+		"email": "kamyaedrine1@gmail.com"
+	}
 }

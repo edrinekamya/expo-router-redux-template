@@ -20,13 +20,13 @@ To create a new mobile app project using this template as an Expo template, foll
 1. Create a new Expo project based on this template using the following command:
 
     ```bash
-    npx create-expo-app my-new-app --template https://github.com/edrinekamya/expo-router-redux-template.git
+    npx create-expo-app my-new-app --template expo-router-redux-template
     ```
 
     or
 
     ```bash
-    yarn create expo-app my-new-app --template https://github.com/edrinekamya/expo-router-redux-template.git
+    yarn create expo-app my-new-app --template expo-router-redux-template
     ```
 
 2. Navigate to the project directory:
