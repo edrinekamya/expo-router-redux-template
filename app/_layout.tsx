@@ -1,56 +1,61 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+// Import necessary components and libraries
+import AppNavigator from '@/components/AppNavigator';
+import Fonts from '@/constants/Fonts';
+import { persistor, store } from '@/redux/store';
 import { useFonts } from 'expo-font';
-import { SplashScreen, Stack } from 'expo-router';
-import { useEffect } from 'react';
-import { useColorScheme } from 'react-native';
+import { SplashScreen } from 'expo-router';
+import { useCallback, useEffect, useState } from 'react';
+import { StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
-export {
-  // Catch any errors thrown by the Layout component.
-  ErrorBoundary,
-} from 'expo-router';
+// Export ErrorBoundary from expo-router
+export { ErrorBoundary } from 'expo-router';
 
+// Define initial settings for navigation
 export const unstable_settings = {
-  // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(tabs)',
+	initialRouteName: '(tabs)',
 };
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
+// Prevent the splash screen from auto-hiding
 SplashScreen.preventAutoHideAsync();
 
+// Define the RootLayout component
 export default function RootLayout() {
-  const [loaded, error] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-    ...FontAwesome.font,
-  });
+	const [stateLoaded, setStateLoaded] = useState(false);
+	const [fontsLoaded, error] = useFonts(Fonts);
 
-  // Expo Router uses Error Boundaries to catch errors in the navigation tree.
-  useEffect(() => {
-    if (error) throw error;
-  }, [error]);
+	// Handle font loading errors
+	useEffect(() => {
+		if (error) throw error;
+	}, [error]);
 
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
+	// Callback function to hide the splash screen when layout is triggered
+	const onLayout = useCallback(() => {
+		SplashScreen.hideAsync();
+	}, []);
 
-  if (!loaded) {
-    return null;
-  }
+	// Callback function executed before the persist gate is lifted
+	const onBeforeLimit = useCallback(() => setStateLoaded(true), []);
 
-  return <RootLayoutNav />;
+	return (
+		<Provider store={store}>
+			<PersistGate persistor={persistor} onBeforeLift={onBeforeLimit}>
+				{/* Render the SafeAreaView and AppNavigator when fonts and state are loaded */}
+				{fontsLoaded && stateLoaded && (
+					<SafeAreaView onLayout={onLayout} style={styles.container}>
+						<AppNavigator />
+					</SafeAreaView>
+				)}
+			</PersistGate>
+		</Provider>
+	);
 }
 
-function RootLayoutNav() {
-  const colorScheme = useColorScheme();
-
-  return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-      </Stack>
-    </ThemeProvider>
-  );
-}
+// Define styles for the component
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+	},
+});

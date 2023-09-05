@@ -1,55 +1,83 @@
+import Text from '@/components/shared/Text';
+import useThemeColor from '@/hooks/useThemeColor';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable, useColorScheme } from 'react-native';
+import { Tabs } from 'expo-router';
+import React, { useEffect, useState } from 'react';
 
-import Colors from '../../constants/Colors';
-
-/**
- * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
- */
+// Define the TabBarIcon function, used for rendering icons in the tab bar
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
   color: string;
 }) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
+  // Render a FontAwesome icon with the specified size and color
+  return <FontAwesome size={28} {...props} />;
 }
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
 
-  return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="two"
-        options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-    </Tabs>
-  );
+const Greeting = () => {
+	// State to hold the greeting message
+	const [greeting, setGreeting] = useState('');
+
+	// Function to determine the time of day and set the greeting message
+	const getGreeting = () => {
+		const currentHour = new Date().getHours();
+
+		if (currentHour >= 5 && currentHour < 12) {
+			setGreeting('Good morning');
+		} else if (currentHour >= 12 && currentHour < 18) {
+			setGreeting('Good afternoon');
+		} else {
+			setGreeting('Good evening');
+		}
+	};
+
+	// Call getGreeting when the component mounts
+	useEffect(() => {
+		getGreeting();
+	}, []);
+
+	return (
+		<Text fontFamily='SFHeavy' fontSize={24}>
+			{greeting}
+		</Text>
+	);
+};
+
+// Define the TabLayout component
+export default function TabLayout() {
+	// Retrieve the active tab bar color from the theme
+	const tabBarActiveTintColor = useThemeColor('tint');
+
+	return (
+		<Tabs
+			screenOptions={{
+				tabBarActiveTintColor,
+				headerTitleStyle: {
+					fontFamily: 'SFMedium',
+				},
+				tabBarLabelStyle: {
+					fontFamily: 'SFMedium',
+				},
+			}}>
+			<Tabs.Screen
+				name='index'
+				options={{
+					title: 'Tab One',
+					headerTitle: () => <Greeting />,
+					tabBarIcon: ({ color }) => (
+						<TabBarIcon name='home' color={color} />
+					),
+				}}
+			/>
+			<Tabs.Screen
+				name='two'
+				options={{
+					title: 'Tab Two',
+					tabBarIcon: ({ color }) => (
+						<TabBarIcon name='user-circle' color={color} />
+					),
+				}}
+			/>
+		</Tabs>
+	);
 }
