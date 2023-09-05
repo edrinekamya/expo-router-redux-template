@@ -19,26 +19,40 @@ To create a new mobile app project using this template as an Expo template, foll
 
 1. Create a new Expo project based on this template using the following command:
 
-    `npx create-expo-app my-new-app --template https://github.com/edrinekamya/expo-router-redux-template.git`
+    ```bash
+    npx create-expo-app my-new-app --template https://github.com/edrinekamya/expo-router-redux-template.git
+    ```
 
     or
 
-    `yarn create expo-app my-new-app --template https://github.com/edrinekamya/expo-router-redux-template.git`
+    ```bash
+    yarn create expo-app my-new-app --template https://github.com/edrinekamya/expo-router-redux-template.git
+    ```
 
 2. Navigate to the project directory:
 
-    `cd my-new-app`
+    ```bash
+    cd my-new-app
+    ```
 
 3. To launch your app and run it on an emulator, physical device, or web browser, start the Expo development server using one of the following commands:
 
     - For Android:
-      `yarn android`
+
+        ```bash
+        yarn android
+        ```
 
     - For iOS:
-      `yarn ios`.
+
+        ```bash
+        yarn ios
+        ```
 
     - For web development:
-      `yarn web`.
+        ```bash
+        yarn web
+        ```
 
 These commands will initiate the Expo development server and allow you to preview and test your app on different platforms.
 
