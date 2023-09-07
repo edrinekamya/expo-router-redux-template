@@ -67,7 +67,7 @@ The project structure follows a typical React Native and Expo Router project lay
 -   `app`: Contains layouts, and screens or routes for your app.
 -   `assets`: Static assets like images and fonts.
 -   `components`: Reusable UI components.
--   `constants`: Contains Colors and Fonts, and any other constants.
+-   `constants`: Contains Colors, Dimensions, Fonts, and any other constants.
 -   `hooks`: Custom React hooks specific to your app.
 -   `redux`: Redux-related files, including reducers, store, and slices.
 
