@@ -2,7 +2,7 @@
 	"name": "expo-router-redux-template",
 	"main": "expo-router/entry",
 	"version": "1.0.1",
-	"description": "A powerful expo template featuring Expo Router, Redux Toolkit, Reanimated, and Redux Persist for cross-platform mobile app development.",
+	"description": "An expo template featuring expo-router, reduxjs-toolkit, react-native-reanimated, and redux-persist for cross-platform mobile app development.",
 	"license": "MIT",
 	"repository": {
 		"type": "git",

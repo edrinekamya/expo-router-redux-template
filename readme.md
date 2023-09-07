@@ -13,6 +13,7 @@ This is a starter template for building mobile applications using Expo and React
 -   **Responsive UI:** The template includes responsive UI components and theming to create a consistent user experience on various devices.
 -   **Navigation:** Utilize React Navigation and Expo router for smooth navigation between screens and tabs.
 -   **Animations:** Elevate your app's user experience with dynamic animations powered by React Native Reanimated.
+-   **Custom Fonts:** Pre-configured with a selection of fonts to elevate your app's typography effortlessly.
 
 ## Usage
 
@@ -61,15 +62,14 @@ You can then begin customizing the template to suit your project's requirements.
 
 ## Project Structure
 
-The project structure follows a typical React Native and Expo project layout, with folders for components, screens, Redux slices, and more. Here's a brief overview:
+The project structure follows a typical React Native and Expo Router project layout, with folders for components, screens, Redux slices, and more. Here's a brief overview:
 
--   `components`: Reusable UI components.
--   `screens`: Individual app screens and components.
--   `redux`: Redux-related files, including reducers, store, and slices.
--   `constants`: Constants, enums, and configuration files.
--   `hooks`: Custom React hooks.
+-   `app`: Contains layouts, and screens or routes for your app.
 -   `assets`: Static assets like images and fonts.
--   `app`: Handles any layouts and routes(screens) in your app.
+-   `components`: Reusable UI components.
+-   `constants`: Contains Colors and Fonts, and any other constants.
+-   `hooks`: Custom React hooks specific to your app.
+-   `redux`: Redux-related files, including reducers, store, and slices.
 
 ## Customize and Extend
 
