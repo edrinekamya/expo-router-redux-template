@@ -12,6 +12,7 @@ This is a starter template for building mobile applications using Expo and React
 -   **Redux Setup:** Get started with state management using Redux Toolkit and predefined slices for common app state, such as authentication and settings.
 -   **Responsive UI:** The template includes responsive UI components and theming to create a consistent user experience on various devices.
 -   **Navigation:** Utilize React Navigation and Expo router for smooth navigation between screens and tabs.
+-   **Animations:** Elevate your app's user experience with dynamic animations powered by React Native Reanimated.
 
 ## Usage
 

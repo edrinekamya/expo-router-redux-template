@@ -2,6 +2,12 @@
 	"name": "expo-router-redux-template",
 	"main": "expo-router/entry",
 	"version": "1.0.0",
+	"description": "A powerful expo template featuring Expo Router, Redux Toolkit, Reanimated, and Redux Persist for cross-platform mobile app development.",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/edrinekamya/expo-router-redux-template.git"
+	},
 	"scripts": {
 		"start": "expo start",
 		"android": "expo start --android",
@@ -53,5 +59,17 @@
 	"author": {
 		"name": "Edrine Kamya",
 		"email": "kamyaedrine1@gmail.com"
-	}
+	},
+	"keywords": [
+		"Expo",
+		"Expo Router",
+		"React Native",
+		"Expo Template",
+		"Mobile App Development",
+		"Redux Toolkit",
+		"Redux Persist",
+		"Theming",
+		"User Authentication",
+		"Redux Slices"
+	]
 }
