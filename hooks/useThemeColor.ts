@@ -1,4 +1,4 @@
-import Colors from '../constants/Colors';
+import Colors from '@/constants/Colors';
 import useColorScheme from './useColorScheme';
 
 // Define a custom hook for accessing theme colors

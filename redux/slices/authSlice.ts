@@ -15,11 +15,11 @@ const authSlice = createSlice({
 	initialState, // Initial state for the slice
 	reducers: {
 		// Reducer function to handle user login
-		login(state) {
+		login(state, payload) {
 			state.loggedIn = true; // Set the 'loggedIn' flag to true
 		},
 		// Reducer function to handle user logout
-		logout(state) {
+		logout(state, payload) {
 			state.loggedIn = false; // Set the 'loggedIn' flag to false
 		},
 	},

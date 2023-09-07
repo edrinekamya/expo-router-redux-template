@@ -1,7 +1,7 @@
 import { Stack } from 'expo-router';
 import { StyleSheet } from 'react-native';
-import Text from '../components/shared/Text';
-import ThemedView from '../components/shared/ThemedView';
+import Text from '@/components/shared/Text';
+import ThemedView from '@/components/shared/ThemedView';
 
 // Define the NotFoundScreen component, representing a 404 error screen
 export default function NotFoundScreen() {

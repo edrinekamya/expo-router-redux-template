@@ -2,7 +2,7 @@ import { Button, StyleSheet } from 'react-native';
 import RootView from '@/components/shared/RootView';
 import useAppDispatch from '@/hooks/useAppDispatch';
 import { logout } from '@/redux/slices/authSlice';
-import Text from '../../components/shared/Text';
+import Text from '@/components/shared/Text';
 
 // Define the TabOneScreen component for Tab One
 export default function TabOneScreen() {
