@@ -1,37 +1,56 @@
-export const tintColorLight = '#2D8CFF';
-const tintColorDark = '#FFFFFF'; // White
+/**
+ * The primary brand color used throughout the application.
+ */
+export const brandColor = '#1E90FF';
 
-export default {
+/**
+ * Colors object that defines the color palette for both light and dark themes.
+ *
+ * You can add more color tokens to suit your specific use cases like ChatBubbles, Cards etc.
+ */
+const Colors = {
 	light: {
-		text: '#000000', // Black
-		background: '#FFFFFF', // White
-		tint: tintColorLight,
-		tabIconDefault: '#CCCCCC', // Light gray
-		tabIconSelected: tintColorLight,
-		primary: '#007BFF', // Blue
-		secondary: '#6C757D', // Slate gray
-		tertiary: '#D1D1D1', // Light gray
-		button: '#2D8CFF', // Blue
-		accent: '#FFC107', // Yellow
-		error: '#FF0000', // Red
-		success: '#008000', // Green
-		warning: '#FFA500', // Orange
-		disabled: '#A1A1A1', // Gray
+		background: '#F5F5F5',
+		primary: '#FFFFFF',
+		secondary: '#D3D3D3',
+		tertiary: '#D3D3D3',
+		text: '#000000',
+		button: brandColor,
+		accent: brandColor,
+		error: '#FF0000',
+		success: '#008000',
+		warning: '#FFA500',
+		disabled: '#D3D3D3',
+		tabIconDefault: '#808080',
+		tabIconSelected: brandColor,
+		grey: '#808080',
+		placeholder: '#D3D3D3',
 	},
 	dark: {
-		text: '#FFFFFF', // White
-		background: '#000000', // Black
-		tint: tintColorDark,
-		tabIconDefault: '#CCCCCC', // Light gray
-		tabIconSelected: tintColorDark,
-		primary: '#2196F3', // Dark blue
-		secondary: '#8E8E93', // Medium gray (slate)
-		tertiary: '#444444', // Dark gray
-		button: '#03A9F4', // Light blue
-		accent: '#FFD700', // Gold
-		error: '#FF0000', // Red
-		success: '#008000', // Green
-		warning: '#FFA500', // Orange
-		disabled: '#787878', // Medium gray
+		background: '#000000',
+		primary: '#111111',
+		secondary: '#A9A9A9',
+		tertiary: '#A9A9A9',
+		text: '#F5F5F5',
+		button: brandColor,
+		accent: brandColor,
+		error: '#FF0000',
+		success: '#008000',
+		warning: '#FFA500',
+		disabled: '#A9A9A9',
+		tabIconDefault: '#808080',
+		tabIconSelected: brandColor,
+		grey: '#808080',
+		placeholder: '#696969',
 	},
 };
+
+/**
+ * Type alias for color names, allowing easy access to color keys.
+ */
+export type ColorName = keyof typeof Colors.light & keyof typeof Colors.dark;
+
+/**
+ * Export the customizable color palette for use throughout your application.
+ */
+export default Colors;

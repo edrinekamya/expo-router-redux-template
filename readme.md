@@ -6,14 +6,14 @@ This is a starter template for building mobile applications using Expo and React
 
 ## Features
 
--   **Ready-to-Use Configuration:** The template includes pre-configured settings for Expo, Expo Router, Redux Toolkit, and Redux Persist.
--   **Theme Support:** Easily customize the appearance of your app with theme support, including light and dark modes.
--   **Authentication Handling:** The template provides a starting point for implementing user authentication using Redux and protected routing access with Expo Router.
--   **Redux Setup:** Get started with state management using Redux Toolkit and predefined slices for common app state, such as authentication and settings.
--   **Responsive UI:** The template includes responsive UI components and theming to create a consistent user experience on various devices.
--   **Navigation:** Utilize React Navigation and Expo router for smooth navigation between screens and tabs.
--   **Animations:** Elevate your app's user experience with dynamic animations powered by React Native Reanimated.
--   **Custom Fonts:** Pre-configured with a selection of fonts to elevate your app's typography effortlessly.
+- **Ready-to-Use Configuration:** The template includes pre-configured settings for Expo, Expo Router, Redux Toolkit, and Redux Persist.
+- **Theme Support:** Easily customize the appearance of your app with theme support, including light and dark modes.
+- **Authentication Handling:** The template provides a starting point for implementing user authentication using Redux and protected routing access with Expo Router.
+- **Redux Setup:** Get started with state management using Redux Toolkit and predefined slices for common app state, such as authentication and settings.
+- **Responsive UI:** The template includes responsive UI components and theming to create a consistent user experience on various devices.
+- **Navigation:** Utilize React Navigation and Expo router for smooth navigation between screens and tabs.
+- **Animations:** Elevate your app's user experience with dynamic animations powered by React Native Reanimated.
+- **Custom Fonts:** Pre-configured with a selection of fonts to elevate your app's typography effortlessly.
 
 ## Usage
 
@@ -52,6 +52,7 @@ To create a new mobile app project using this template as an Expo template, foll
         ```
 
     - For web development:
+
         ```bash
         yarn web
         ```
@@ -62,14 +63,35 @@ You can then begin customizing the template to suit your project's requirements.
 
 ## Project Structure
 
-The project structure follows a typical React Native and Expo Router project layout, with folders for components, screens, Redux slices, and more. Here's a brief overview:
+The project structure follows the [Ducks pattern](https://redux.js.org/style-guide/style-guide#structure-files-as-feature-folders-with-single-file-logic) recommended in the Redux documentation, combined with the typical layout for a React Native and Expo Router project. Below is a concise overview of the key directories:
 
--   `app`: Contains layouts, and screens or routes for your app.
--   `assets`: Static assets like images and fonts.
--   `components`: Reusable UI components.
--   `constants`: Contains Colors, Dimensions, Fonts, and any other constants.
--   `hooks`: Custom React hooks specific to your app.
--   `redux`: Redux-related files, including reducers, store, and slices.
+- **`/app`**: Contains layouts and screens (or routes).
+
+- **`/assets`**: Stores static assets such as images and fonts.
+
+- **`/common`**: A collection of common utilities and components that can be reused across your app.
+
+  - **`/hooks`**: Custom React hooks designed specifically for your app.
+
+  - **`/components`**: Generic UI components that are reusable throughout your project.
+
+- **`/constants`**: Houses various constants, including Colors, Fonts etc.
+
+- **`/features`**: Individual features or modules of your application.
+
+  - **`/feature`**: A feature in the app
+
+    - **`featureSlice.ts`**: Holds Redux logic for the feature.
+
+    - **`FeatureComponent.tsx`**: A component related to this feature.
+
+- **`/store`**: Includes redux-related files
+
+  - **`configureStore.ts`**: Responsible for the configuration and setup of your redux store.
+
+  - **`reducer.ts`**: Contains the root reducer.
+
+Feel free to adapt and expand upon this structure as needed to suit the specific requirements of your project.
 
 ## Customize and Extend
 

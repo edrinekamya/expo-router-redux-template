@@ -1,61 +1,28 @@
-// Import necessary components and libraries
-import AppNavigator from '@/components/AppNavigator';
-import Fonts from '@/constants/Fonts';
-import { persistor, store } from '@/redux/store';
-import { useFonts } from 'expo-font';
-import { SplashScreen } from 'expo-router';
-import { useCallback, useEffect, useState } from 'react';
-import { StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
+// Import necessary components and libraries from 'expo-router'
+import { Slot, SplashScreen } from 'expo-router';
 
-// Export ErrorBoundary from expo-router
+// Export ErrorBoundary from 'expo-router'
 export { ErrorBoundary } from 'expo-router';
 
-// Define initial settings for navigation
+// Define initial navigation settings
 export const unstable_settings = {
-	initialRouteName: '(tabs)',
+	initialRouteName: '(root)',
 };
 
-// Prevent the splash screen from auto-hiding
+// Prevent the splash screen from automatically hiding
 SplashScreen.preventAutoHideAsync();
 
-// Define the RootLayout component
-export default function RootLayout() {
-	const [stateLoaded, setStateLoaded] = useState(false);
-	const [fontsLoaded, error] = useFonts(Fonts);
-
-	// Handle font loading errors
-	useEffect(() => {
-		if (error) throw error;
-	}, [error]);
-
-	// Callback function to hide the splash screen when layout is triggered
-	const onLayout = useCallback(() => {
-		SplashScreen.hideAsync();
-	}, []);
-
-	// Callback function executed before the persist gate is lifted
-	const onBeforeLimit = useCallback(() => setStateLoaded(true), []);
-
-	return (
-		<Provider store={store}>
-			<PersistGate persistor={persistor} onBeforeLift={onBeforeLimit}>
-				{/* Render the SafeAreaView and AppNavigator when fonts and state are loaded */}
-				{fontsLoaded && stateLoaded && (
-					<SafeAreaView onLayout={onLayout} style={styles.container}>
-						<AppNavigator />
-					</SafeAreaView>
-				)}
-			</PersistGate>
-		</Provider>
-	);
+/**
+ * 1. Expo router requires rendering a "Slot" or layout component (e.g., Stack, Tab) during the initial render.
+ *
+ * 2. In this case, we have components that can potentially delay the rendering of the Slot:
+ *    - PersistGate: For rehydrating the store.
+ *    - useFonts: For loading custom fonts.
+ *
+ * 3. To ensure that state and custom fonts are fully loaded before rendering the entire app, we render a Slot here.
+ *    The actual rendering of the app is deferred to a layout component one level down in the component hierarchy.
+ */
+export default function () {
+	// Render the Slot component to initiate navigation
+	return <Slot />;
 }
-
-// Define styles for the component
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-	},
-});
